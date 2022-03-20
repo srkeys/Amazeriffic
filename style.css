@@ -1,9 +1,12 @@
 body {
     background: #f9e933;
+    margin: auto;
+    width: 855px;
     }
     
 header, main, footer {
        min-width: 855px;
+       max-width: 855px;
     }
     header {
         background: white;
