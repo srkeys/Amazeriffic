@@ -1,18 +1,61 @@
 body {
     background: #f9e933;
+    overflow: auto;
     /* margin: auto;
     width: 855px; */
     }
     header, main, footer {
-        min-width: 855px;
+        min-width: 900px;
+    }
+    header .container, main .container, footer .container {
+        max-width: 900px;
+        margin: auto;
     }
     header {
         background: white;
         }
+    header h1{
+            float: left;
+            width: 570px;
+    }
+    header nav{
+            float: right;
+            width: 285px;
+    } 
     main {
         background: white;
-        }      
-    header .container, main .container, footer .container {
-            max-width: 855px;
-            margin: auto;
-    }
+        }
+    main .left_column {
+            float: left;
+            width: 570px;
+    } 
+    /* main h2, p, h3, ul {
+        float: left;
+        width: 570px;
+    } */
+    /* main .right_column {
+        float: right;
+        width: 285px;
+    } */
+
+    /* main{
+        float: right;
+        width: 570px;
+    } */
+    /* main img {
+        float: right;
+        width: 285px;
+        width: 25%;
+    } */
+    /* main .right_column {
+        float: right;
+        width: 285px;
+    } */
+    footer .left_column {
+        float: left;
+        width: 570px;
+    }    
+    footer .right_column {
+        float: right;
+        width: 285px;
+    }    
