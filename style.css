@@ -2,6 +2,7 @@ body {
     background: #f9e933;
     font-family: 'Droid sans';
 	font-size: 100%;
+    /* overflow: auto; */
     /* margin: auto;
     width: 855px; */
 }
@@ -34,7 +35,7 @@ header .container, main .container, footer .container {
 header {
     background: white;
     overflow: auto;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
 	padding: 10px;
 }
 
