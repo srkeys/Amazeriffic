@@ -1,6 +1,6 @@
 body {
     background: #f9e933;
-    overflow: auto;
+    /* font-size: 100%; */
     /* margin: auto;
     width: 855px; */
     }
@@ -13,6 +13,7 @@ body {
     }
     header {
         background: white;
+        overflow: auto;
         }
     header h1{
             float: left;
@@ -24,6 +25,7 @@ body {
     } 
     main {
         background: white;
+        overflow: auto;
         }
     main .left_column {
             float: left;
@@ -47,10 +49,10 @@ body {
         width: 285px;
         width: 25%;
     } */
-    /* main .right_column {
+    main .right_column {
         float: right;
         width: 285px;
-    } */
+    }
     footer .left_column {
         float: left;
         width: 570px;
