@@ -100,3 +100,17 @@ footer .sitemap {
 	float: right;	
 	width: 285px;
 }
+
+.tabs a span {
+    display: inline-block;
+    border-radius: 10px 10px 5px 5px;
+    width: 120px;
+    margin-right: 5px;
+    text-align: center;
+    background: #ddd;
+    padding: 5px;
+}
+
+.tabs a span.active {
+background: #eee;
+}
