@@ -1,21 +1,14 @@
-var main = function () {
+var main = function (toDoObjects) {
     "use strict";
 
-    var toDos = [
-        "Закончить писать эту книгу",
-        "Вывести Грейси на прогулку в парк",
-        "Ответить на электронные письма",
-        "Подготовиться к лекции в понедельник",
-        "Обновить несколько новых задач",
-        "Купить продукты"
-        ];        
+    var toDos = toDoObjects.map(function (toDo) {
+        // просто возвращаем описание
+        // этой задачи
+        return toDo.description;
+    });
 
     $(".tabs a span").toArray().forEach(function (element) {
-    // создаем обработку щелчков для этого элемента
     $(element).on("click", function () {
-        // поскольку мы используем версию элемента jQuery,
-        // нужно создать временную переменную,
-        // чтобы избежать постоянного обновления
         var $element = $(element), $content;
         $(".tabs a span").removeClass("active");
         $element.addClass("active");
@@ -53,4 +46,10 @@ var main = function () {
     $(".tabs a:first-child span").trigger("click");
 };
 
-$("document").ready(main);
+$(document).ready(function () {
+    $.getJSON("todos.json", function (toDoObjects) {
+        // вызов функции main с аргументом в виде объекта toDoObjects
+        main(toDoObjects);
+    });
+});
+    
