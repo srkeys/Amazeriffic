@@ -9,7 +9,8 @@ var main = function (toDoObjects) {
 
     $(".tabs a span").toArray().forEach(function (element) {
     $(element).on("click", function () {
-        var $element = $(element), $content;
+        var $element = $(element),
+        $content;
         $(".tabs a span").removeClass("active");
         $element.addClass("active");
         $("main .content").empty();
