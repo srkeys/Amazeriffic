@@ -1,3 +1,28 @@
+var organizeByTags = function (toDoObjects) {
+    var tags = [];
+    var toDoes = [];
+    var result = [];
+    var onetags = function(toDoObjects, tag) {
+        var toTag = [];
+        toDoObjects.forEach(function (toDo) {
+            if (toDo.tags.indexOf(tag) !== -1) {
+                toTag.push(toDo.description);
+            }
+        });
+        return toTag;
+    }
+    toDoObjects.forEach(function (toDo) {
+        toDo.tags.forEach(function (tag) {
+            if (tags.indexOf(tag) === -1) {
+                tags.push(tag);
+                toDoes = onetags(toDoObjects, tag);
+                result.push({ "name": tag, "toDos": toDoes });
+            }
+        });
+    });
+return result;
+}
+
 var main = function (toDoObjects) {
     "use strict";
 
@@ -26,34 +51,9 @@ var main = function (toDoObjects) {
         } else if ($element.parent().is(":nth-child(3)")) {
             // ЭТО КОД ДЛЯ ВКЛАДКИ ТЕГИ
             console.log("щелчок на вкладке Теги");
-            var organizedByTag = [
-                {
-                "name": "покупки",
-                "toDos": ["Купить продукты"]
-                },
-                {
-                "name": "рутина",
-                "toDos": ["Купить продукты", "Вывести Грейси на прогулку в парк"]
-                },
-                {
-                "name": "писательство",
-                "toDos": ["Сделать несколько новых задач", "Закончить писать книгу"]
-                },
-                {
-                "name": "работа",
-                "toDos": ["Сделать несколько новых задач", "Подготовиться к лекции в понедельник",
-                "Ответить на электронные письма", "Закончить писать книгу"]
-                },
-                {
-                "name": " преподавание",
-                "toDos": ["Подготовиться к лекции в понедельник"]
-                },
-                {
-                "name": "питомцы",
-                "toDos": ["Вывести Грейси на прогулку в парк "]
-                }
-                ];
-                organizedByTag.forEach(function (tag) {
+            //var organizedByTag = organizeByTag(toDoObjects);
+            var tags = organizeByTags(toDoObjects);
+                tags.forEach(function (tag) {
                     var $tagName = $("<h3>").text(tag.name),
                     $content = $("<ul>");
                     tag.toDos.forEach(function (description) {
