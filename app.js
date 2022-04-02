@@ -23,14 +23,19 @@ var organizeByTags = function (toDoObjects) {
 return result;
 }
 
-var main = function (toDoObjects) {
-    "use strict";
-
-    var toDos = toDoObjects.map(function (toDo) {
+var updateToDos = function(todos) {
+    todos = toDoObjects.map(function (toDo) {
         // просто возвращаем описание
         // этой задачи
         return toDo.description;
     });
+    return todos
+}
+
+var main = function (toDoObjects) {
+    "use strict";
+
+    var toDos = updateToDos;
 
     $(".tabs a span").toArray().forEach(function (element) {
     $(element).on("click", function () {
@@ -63,20 +68,27 @@ var main = function (toDoObjects) {
                     $("main .content").append($tagName);
                     $("main .content").append($content);
                     });                                              
-        } else if ($element.parent().is(":nth-child(4)")) {
-            $(".content").append(
-				'<input type="text" class="inp">'+
-				'<button class="btn">Добавить</button>'
-			);
-			var newToDo;
-			$('.btn').on('click',function(){
-				newToDo= $('.inp').val();
-				if (newToDo!='') {
-					toDos.push( newToDo);
-					alert('Новое задание "'+newToDo+'" успешно добавлено!');
-					$('.inp').val("");
-				}
-			})
+            } else if ($element.parent().is(":nth-child(4)")) {
+                var $input = $("<input>").addClass("description"),
+                $inputLabel = $("<p>").text("Новая задача: "),
+                $tagInput = $("<input>").addClass("tags"),
+                $tagLabel = $("<p>").text("Тэги: "),
+                $button = $("<span>").text("Добавить");
+                $button.on("click", function () {
+                    var description = $input.val(),
+                    // разделение в соответствии с запятыми
+                    tags = $tagInput.val().replace(/\s+/g, '').split(",");
+                    toDoObjects.push({"description" : description, "tags" : tags });
+                    alert('Новое задание "' + description + '" успешно добавлено! С тегами "' + tags + '" ');
+                    // обновление toDos
+                    toDos = updateToDos;
+                $input.val("");
+                $tagInput.val("");
+                });
+                $content = $("<div>");
+                $content.append($("<div class= \"div_descr\">").append($inputLabel).append($input))
+                $content.append($("<div class= \"div_but\">").append($button))
+                $content.append($("<div class= \"div_tags\">").append($tagLabel).append($tagInput))
             }
         $("main .content").append($content);
         return false;
