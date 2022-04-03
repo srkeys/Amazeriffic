@@ -23,19 +23,38 @@ var organizeByTags = function (toDoObjects) {
 return result;
 }
 
-var updateToDos = function(todos) {
-    todos = toDoObjects.map(function (toDo) {
+// var clearflicker = function() {
+//     $("main .photos").empty();
+//     var but_abort = document.getElementById("search");
+//     but_abort.addEventListener("click", function(event) {
+//         console.log("Действие было отменено");
+//         event.preventDefault();
+//     }, false)
+//     //$("body .script_photos").empty();
+//     // $(document).trigger(function () {
+//     //     // вызов функции main с аргументом в виде объекта toDoObjects
+//     //     slideshow("");
+//     // });
+// }
+
+var updateToDos = function(toDoObjects) {
+    var todos = toDoObjects.map(function (toDo) {
         // просто возвращаем описание
         // этой задачи
         return toDo.description;
     });
-    return todos
+    return todos;
 }
 
 var main = function (toDoObjects) {
     "use strict";
 
-    var toDos = updateToDos;
+    var toDos = updateToDos(toDoObjects);
+    // var toDos = toDoObjects.map(function (toDo) {
+    //     // просто возвращаем описание
+    //     // этой задачи
+    //     return toDo.description;
+    // });
 
     $(".tabs a span").toArray().forEach(function (element) {
     $(element).on("click", function () {
@@ -81,7 +100,7 @@ var main = function (toDoObjects) {
                     toDoObjects.push({"description" : description, "tags" : tags });
                     alert('Новое задание "' + description + '" успешно добавлено! С тегами "' + tags + '" ');
                     // обновление toDos
-                    toDos = updateToDos;
+                    toDos = updateToDos(toDoObjects);
                 $input.val("");
                 $tagInput.val("");
                 });
@@ -89,7 +108,14 @@ var main = function (toDoObjects) {
                 $content.append($("<div class= \"div_descr\">").append($inputLabel).append($input))
                 $content.append($("<div class= \"div_but\">").append($button))
                 $content.append($("<div class= \"div_tags\">").append($tagLabel).append($tagInput))
-            }
+            } else if ($element.parent().is(":nth-child(5)")) { 
+				var js = document.createElement('script');
+				js.src = "test_2.js";
+				document.body.appendChild(js);
+                // $("body .script_photos").empty();
+                // var js = $("<script>").attr("src", "test_2.js")
+                // $("body .script_photos").append(js);
+			}
         $("main .content").append($content);
         return false;
         });
