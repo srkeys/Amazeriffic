@@ -84,7 +84,7 @@ var main = function (toDoObjects) {
                         // этот обратный вызов выполняется при ответе сервера
                         // console.log("Мы отправили данные и получили ответ сервера!");
                         console.log(result);
-                        alert(result);
+                        alert(newToDo);
                         // обновление toDos
                         toDos = updateToDos(toDoObjects);
                         $input.val("");
