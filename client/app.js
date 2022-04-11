@@ -80,7 +80,7 @@ var main = function (toDoObjects) {
                     // toDoObjects.push({"description" : description, "tags" : tags });
                     // alert('Новое задание "' + description + '" успешно добавлено! С тегами "' + tags + '" ');
                     // здесь мы отправляем быстрое сообщение на маршрут списка задач
-                    $.post("todos", newToDo, function (result) {
+                    $.post("todos_old", newToDo, function (result) {
                         // этот обратный вызов выполняется при ответе сервера
                         // console.log("Мы отправили данные и получили ответ сервера!");
                         console.log(result);
@@ -104,7 +104,7 @@ var main = function (toDoObjects) {
 };
 
 $(document).ready(function () {
-    $.getJSON("todos.json", function (toDoObjects) {
+    $.getJSON("/todos.json", function (toDoObjects) {
         // вызов функции main с аргументом в виде объекта toDoObjects
         main(toDoObjects);
     });
