@@ -121,9 +121,9 @@ main .div_but {
 
 main li {
     border-radius: 10px 10px 5px 5px;
-    width: 120px;
+    width: 200px;
     margin: 10px;
-    text-align: left;
+    text-align: center;
     background: #ffa;
     padding: 5px;
 }
